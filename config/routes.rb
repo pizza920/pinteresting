@@ -1,7 +1,8 @@
 Pinteresting::Application.routes.draw do
   resources :pins
 
-  devise_for :users
+  devise_for :users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   root"pins#index"
   get"about" =>"pages#about" #creates about path
   
