@@ -3,7 +3,6 @@ class CreateTitleTags < ActiveRecord::Migration
     create_table :title_tags do |t|
       t.string :title
       t.integer :website_id
-      belongs_to :website
 
       t.timestamps
     end
