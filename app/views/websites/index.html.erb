@@ -1,2 +1,12 @@
-<h1>Websites#index</h1>
-<p>Find me in app/views/websites/index.html.erb</p>
+<%= render 'shared/links' %>
+<% @websites.each do |website| %>
+	<h1> <%= link_to website.name, website.url %> </h1>
+		<p>
+			<%= website.description %>
+		</p>
+		<p> 
+		 <% website.title_tags.each do |title_tag| %>
+		 <%= title_tag.title %>
+		 <% end %>
+	 </p>
+<% end %>

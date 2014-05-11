@@ -1,6 +1,6 @@
 class WebsitesController < ApplicationController
   def index
-  	@websites = Website.all
+  	@websites = Website.order('rank desc').all
   end
 
   def show
