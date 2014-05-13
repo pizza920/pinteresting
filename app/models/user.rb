@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
  # validates :name, presence: true
 
   has_many :pins
+  has_many :website_rank
 end
