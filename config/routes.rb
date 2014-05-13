@@ -1,4 +1,5 @@
 Pinteresting::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
   get "websites" => 'websites#index'
   get "websites/:id" => 'websites#show'
   resources :pins
