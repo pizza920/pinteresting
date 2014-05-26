@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513043152) do
+ActiveRecord::Schema.define(version: 20140526134422) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 20140513043152) do
   end
 
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"
+
+  create_table "site_sources", force: true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "parser"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "title_tags", force: true do |t|
     t.string   "title"

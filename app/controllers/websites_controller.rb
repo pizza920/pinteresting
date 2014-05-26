@@ -1,7 +1,7 @@
 class WebsitesController < ApplicationController
   def index
   	if current_user
- 			@websites = Website.join(:website_rank).where(user_id: current_user.id).order('custom_rank desc').all
+ 			@websites = Website.joins(:website_rank).where('website_ranks.user_id=?',current_user.id).order('custom_rank desc').all
 		else
   	  @websites = Website.order('rank desc').all
 end

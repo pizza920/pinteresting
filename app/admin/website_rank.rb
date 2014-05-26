@@ -1,5 +1,12 @@
 ActiveAdmin.register WebsiteRank do
    permit_params :website_id, :user_id, :custom_rank
+   form do |f|
+    f.inputs do
+      f.input :user, as: :select, collection: User.all.map{|u| [u.name, u.id]}
+      f.input :website, as: :select, collection: Website.all.map{|w| [w.name, w.id]}
+      f.input :custom_rank
+    end
+  end
 
   
   # See permitted parameters documentation:
