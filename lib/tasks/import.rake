@@ -6,3 +6,9 @@ task :import => :environment do
     website.save
 	end
 end
+
+task :getsites => :environment do
+  SiteSource.find_each do |s|
+    s.parse
+  end
+end
