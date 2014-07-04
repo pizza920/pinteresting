@@ -1,4 +1,5 @@
 <%= render 'shared/links' %>
+<%= will_paginate @websites, renderer: BootstrapPagination::Rails%>
 <% @websites.each do |website| %>
 	<h1> <%= link_to website.name, website.url %> </h1>
 		<p>

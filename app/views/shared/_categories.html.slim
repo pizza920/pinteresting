@@ -1,0 +1,12 @@
+.btn-group
+  - @categories.each_with_index do |category, index|
+    - i = index%10 + 1
+    .btn-group
+      button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" class="cat#{i}" id="dropdownMenu1#{category.id}"
+        = category.title
+        ' 
+        span.caret
+      ul.dropdown-menu role="menu" aria-labelledby="dropdownMenu#{category.id}"
+        -category.subdir.each do |sub|
+          li role="presentation"
+            a role="menuitem" tabindex="-1" href=category_path(category: sub.slug) =sub.title
