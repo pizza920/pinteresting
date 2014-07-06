@@ -1,0 +1,6 @@
+h1 Your Profile 
+.my_profile
+  = semantic_form_for @profile do |f|
+    = f.label :rank, 'Preffered Rank:'
+    = f.input :rank, as: :radio, collection: (1..10)
+    = f.submit

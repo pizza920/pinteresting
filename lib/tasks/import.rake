@@ -3,7 +3,8 @@ task :import => :environment do
       begin
         page = MetaInspector.new(website.url)
         website.title_tags.find_or_create_by title: page.title
-        website.description = page.description
+        website.description = page.meta[description]
+        website.text_amount = 
         website.save
       rescue => e
         p "Error on website #{website.url}: #{e.message}"

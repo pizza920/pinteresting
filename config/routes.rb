@@ -1,4 +1,5 @@
 Pinteresting::Application.routes.draw do
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   get "websites" => 'websites#index'
   get "websites/:category" => 'websites#index_category', as: :category
@@ -7,6 +8,9 @@ Pinteresting::Application.routes.draw do
 
   devise_for :users
   ActiveAdmin.routes(self)
+
+  get "profile" => 'profile#show'
+  patch "profile" => 'profile#update'
   root"pins#index"
   get"about" =>"pages#about" #creates about path
   
