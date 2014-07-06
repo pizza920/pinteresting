@@ -19,7 +19,7 @@ class Pinterest::ParserIomwebguide
   end
 
   def parse_directory(doc)
-    directory_name = doc.css('h1').text.strip
+    directory_name = doc.css('h1').text.strip.gsub("\n",' ').gsub('  ',' ')
     directory = Directory.find_or_create_by_title directory_name
     doc.css('.result a.co_name').each do |elem|
       link = elem.attr('href')

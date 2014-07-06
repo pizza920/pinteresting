@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704193349) do
+ActiveRecord::Schema.define(version: 20140706190111) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20140704193349) do
     t.integer  "parent_id"
     t.integer  "level"
     t.string   "slug"
+    t.text     "synonyms"
+    t.integer  "sub_count"
   end
 
   create_table "friendly_id_slugs", force: true do |t|
@@ -82,6 +84,13 @@ ActiveRecord::Schema.define(version: 20140704193349) do
   end
 
   add_index "pins", ["user_id"], name: "index_pins_on_user_id"
+
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "rank"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "site_sources", force: true do |t|
     t.string   "title"
@@ -133,6 +142,7 @@ ActiveRecord::Schema.define(version: 20140704193349) do
     t.text     "description"
     t.integer  "rank"
     t.integer  "directory_id"
+    t.integer  "text_amount"
   end
 
 end

@@ -7,7 +7,7 @@ class Pinterest::ParserIsleOfMan
     uri = URI.parse @url
     doc = Nokogiri::HTML(open @url)
     doc.css('#quick-search ul li a').each do |elem|
-      directory_name = elem.text
+      directory_name = elem.text.strip.gsub("\n",' ').gsub('  ',' ')
       directory_url = uri.scheme + '://' + uri.host + elem.attr('href')
       directory = Directory.find_or_create_by_title directory_name
       parse_directory directory, directory_url

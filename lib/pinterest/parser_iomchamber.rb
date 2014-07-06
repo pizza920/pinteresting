@@ -8,7 +8,7 @@ class Pinterest::ParserIomchamber
     doc = Nokogiri::HTML(open @url)
     doc.css('select[name=category] option').each do |elem|
       next unless elem.attr('value') 
-      directory_name = elem.text
+      directory_name = elem.text.strip.gsub("\n",' ').gsub('  ',' ')
       directory_url = @url + "?category=" + elem.attr('value')
       directory = Directory.find_or_create_by_title directory_name
       parse_directory directory, directory_url

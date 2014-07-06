@@ -10,3 +10,11 @@
         -category.subdir.each do |sub|
           li role="presentation"
             a role="menuitem" tabindex="-1" href=category_path(category: sub.slug) =sub.title
+.row
+  = form_tag category_path('search'), method: :get do
+    span
+    br
+    .col-md-4
+      = text_field_tag :search, params[:search]
+      = submit_tag 'Search'
+

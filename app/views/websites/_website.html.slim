@@ -1,0 +1,13 @@
+.website
+  h4
+    .title-tag 
+      - website.title_tags.each do |title_tag| 
+        = title_tag.title unless title_tag.title.to_s.match /DebugKit|cake-error/
+    = link_to website.url do
+      img src="http://www.google.com/s2/favicons?domain=#{website.url}"
+      = website.name
+  .description
+    - unless website.description.to_s.match /cake-error|DebugKit/
+      == website.description.presence || 'No description found'
+    - else
+      ' No description found

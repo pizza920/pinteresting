@@ -1,0 +1,5 @@
+<h1> <%= @category.try(:title) || 'Search: ' + params[:search] %> </h1>
+<% @websites.each do |website| %>
+  <%= render 'website', website: website %>
+<% end %>
+<%= will_paginate @websites, renderer: BootstrapPagination::Rails%>

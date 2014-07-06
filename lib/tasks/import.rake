@@ -1,15 +1,5 @@
 task :import => :environment do
-	Website.find_each do |website|
-      begin
-        page = MetaInspector.new(website.url)
-        website.title_tags.find_or_create_by title: page.title
-        website.description = page.meta[description]
-        website.text_amount = 
-        website.save
-      rescue => e
-        p "Error on website #{website.url}: #{e.message}"
-      end
-	end
+  Website.add_info
 end
 
 task :getsites => :environment do

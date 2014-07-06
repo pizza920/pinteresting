@@ -11,7 +11,7 @@ Pinteresting::Application.routes.draw do
 
   get "profile" => 'profile#show'
   patch "profile" => 'profile#update'
-  root"pins#index"
+  root 'websites#index'
   get"about" =>"pages#about" #creates about path
   
   # The priority is based upon order of creation: first created -> highest priority.

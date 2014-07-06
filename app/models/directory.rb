@@ -24,4 +24,7 @@ class Directory < ActiveRecord::Base
       end
     end
   end
+
+  def self.set_sub_count
+  end
 end
