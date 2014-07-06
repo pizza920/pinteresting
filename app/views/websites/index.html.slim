@@ -1,7 +1,7 @@
-- Directory.roots.reorder('sub_count asc,position desc').each_slice(6).each do |roots|
+- Directory.roots.reorder('sub_count asc,position desc').each_slice(4).each do |roots|
   .row 
     - roots.each do |root|
-      .col-md-2
+      .col-md-3
         h1= root.title
         ul
           - root.subdir.each do |sub|
