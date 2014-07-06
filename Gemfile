@@ -21,12 +21,14 @@ gem 'will_paginate-bootstrap'
 gem 'metainspector'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'nokogiri' 
+gem 'thin'
 
 
 
 
 group :development, :test do 
 	gem 'sqlite3'
+    gem 'capistrano'
 end 
 
 group :production do 
