@@ -9,6 +9,7 @@ class Website < ActiveRecord::Base
         self.description = page.description
         doc = Nokogiri::HTML(open self.url)
         self.text_amount = doc.text.length
+        self.content = doc.text
       rescue => e
       end
       self.save

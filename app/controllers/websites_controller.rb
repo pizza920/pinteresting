@@ -12,12 +12,13 @@ class WebsitesController < ApplicationController
     if current_user
       #@websites = @category.websites.joins(:website_rank).where('website_ranks.user_id=?',current_user.id).order('custom_rank desc')
       my_rank = current_user.profile.try(:rank) || 0
-      @websites = @websites.order('rank desc').where('rank >= ?', my_rank)
+      @websites = @websites.order(my_rank >= 5 ? 'rank desc' : 'rank asc')
     else
       @websites = @websites.order('rank desc')
     end
 
-    @websites= @websites.where("name like ?", "%#{params[:search]}%") if params[:search].present?
+    query = "%#{params[:search]}%"
+    @websites= @websites.joins(:title_tags).where("name like ? or title_tags.title like ? or description like ? or content like ?", query,query,query, query) if params[:search].present?
     @websites = @websites.paginate(page: params[:page], per_page: 10)
   end
 
