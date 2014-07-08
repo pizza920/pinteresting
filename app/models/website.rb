@@ -10,11 +10,12 @@ class Website < ActiveRecord::Base
         
 
         doc = Nokogiri::HTML(open self.url)
-        self.description = page.css('h1,h2,h3')[0..5].map(&:text).join('. ') if self.description.blank?
-        self.description = page.css('p,div')[0..5].map(&:text).join('. ') if self.description.blank?
+        self.description = doc.css('h1,h2,h3')[0..5].map(&:text).join('. ') if self.description.blank?
+        self.description = doc.css('p,div')[0..5].map(&:text).join('. ') if self.description.blank?
         self.text_amount = doc.text.length
         self.content = doc.text
       rescue => e
+       p e.message
       end
       self.save
     end
