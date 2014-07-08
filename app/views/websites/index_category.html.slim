@@ -1,0 +1,6 @@
+h1 = @category.try(:title) || 'Search: ' + params[:search] 
+- if @websites.present?
+  ' See Your Company Here, Email: david@internetspecialistsny.com
+- @websites.each do |website| 
+  = render 'website', website: website 
+= will_paginate @websites, renderer: BootstrapPagination::Rails

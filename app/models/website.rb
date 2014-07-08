@@ -7,7 +7,11 @@ class Website < ActiveRecord::Base
         page = MetaInspector.new(self.url)
         self.title_tags.find_or_create_by title: page.title
         self.description = page.description
+        
+
         doc = Nokogiri::HTML(open self.url)
+        self.description = page.css('h1,h2,h3')[0..5].map(&:text).join('. ') if self.description.blank?
+        self.description = page.css('p,div')[0..5].map(&:text).join('. ') if self.description.blank?
         self.text_amount = doc.text.length
         self.content = doc.text
       rescue => e
